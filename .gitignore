@@ -1,0 +1,17 @@
+# Private source material: the CV has her home address and phone number
+CV_*.pdf
+*.pdf
+!assets/**/*.pdf
+
+# Original photos (web copies live in assets/img/)
+pictures/
+
+# Working notes
+link_to_her_linktree.txt
+links_to_her_projects.txt
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

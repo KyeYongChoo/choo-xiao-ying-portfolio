@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Choo Xiao Ying — Production &amp; Post</title>
+  <meta name="description" content="Choo Xiao Ying — producer, production assistant, production designer and editor based in Selangor, Malaysia. Available for hire.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo">CXY<span class="rec-dot" aria-hidden="true"></span></a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span>
+    </button>
+    <nav id="nav-links" class="nav__links">
+      <a href="#reel">Reel</a>
+      <a href="#work">Filmography</a>
+      <a href="#crew">What I Do</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav__cta">Hire Me</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO — letterboxed title card ============ -->
+  <section class="hero" id="top">
+    <div class="hero__stills" aria-hidden="true">
+      <img src="assets/stills/mission-lanterns.jpg" alt="" class="is-active">
+      <img src="assets/stills/satu-balcony.jpg" alt="">
+      <img src="assets/stills/chiral-clock.jpg" alt="">
+      <img src="assets/stills/writer-desk.jpg" alt="">
+    </div>
+    <div class="hero__grain" aria-hidden="true"></div>
+
+    <!-- camera viewfinder overlay -->
+    <div class="viewfinder" aria-hidden="true">
+      <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+      <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+      <div class="vf-top">
+        <span class="vf-rec"><i></i>REC</span>
+        <span class="vf-tc" id="timecode">00:00:00:00</span>
+        <span class="vf-meta">4K · 24FPS · ISO 800</span>
+      </div>
+      <div class="vf-bottom">
+        <span id="still-caption">Still — <em>The Mission</em> (2026)</span>
+        <span>WB 5600K</span>
+      </div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__status"><span class="status-dot"></span> Available for hire — Malaysia &amp; remote</p>
+      <h1 class="hero__title">
+        <span class="hero__kicker">A production by</span>
+        Choo Xiao Ying
+      </h1>
+      <p class="hero__roles">
+        Producer <i>/</i> Production Assistant <i>/</i> Production Designer <i>/</i> Editor
+      </p>
+      <div class="hero__actions">
+        <a href="#work" class="btn btn--primary">▶ Roll the reel</a>
+        <a href="#contact" class="btn btn--ghost">Book me for your shoot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOWREEL ============ -->
+  <section class="section reel" id="reel">
+    <div class="section__head">
+      <span class="slate-label">Scene 01</span>
+      <h2>Showreel</h2>
+    </div>
+    <!--
+      TODO (Xiao Ying): Replace this placeholder with your showreel.
+      For a YouTube video, swap the whole .placeholder div for:
+      <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Showreel" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    -->
+    <div class="reel__frame">
+      <div class="placeholder placeholder--reel">
+        <div class="clapper" aria-hidden="true">
+          <div class="clapper__top"></div>
+          <div class="clapper__body">
+            <div><small>PROD.</small>SHOWREEL 2026</div>
+            <div class="clapper__row">
+              <div><small>ROLL</small>—</div>
+              <div><small>SCENE</small>01</div>
+              <div><small>TAKE</small>?</div>
+            </div>
+            <div><small>CREW</small>CHOO XIAO YING</div>
+          </div>
+        </div>
+        <p class="placeholder__note">Showreel coming soon<br><span>[ placeholder — drop a 60–90s highlight cut here ]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FILMOGRAPHY (filled by projects.js) ============ -->
+  <section class="section work" id="work">
+    <div class="section__head">
+      <span class="slate-label">Scene 02</span>
+      <h2>Filmography</h2>
+      <p class="section__sub">Short films, documentary, branded and social work — from first budget sheet to final export.</p>
+    </div>
+
+    <div class="filters" role="tablist" aria-label="Filter projects">
+      <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button class="filter" data-filter="film" role="tab" aria-selected="false">Film &amp; Drama</button>
+      <button class="filter" data-filter="commercial" role="tab" aria-selected="false">Commercial</button>
+      <button class="filter" data-filter="post" role="tab" aria-selected="false">Edit &amp; Motion</button>
+    </div>
+
+    <div class="filmstrip" id="filmstrip"></div>
+  </section>
+
+  <!-- ============ WHAT I DO — call sheet ============ -->
+  <section class="section crew" id="crew">
+    <div class="section__head">
+      <span class="slate-label">Scene 03</span>
+      <h2>Call Sheet</h2>
+      <p class="section__sub">Where I fit on your production — before, during and after the shoot.</p>
+    </div>
+
+    <div class="callsheet">
+      <div class="callsheet__header">
+        <div><small>Production</small>Your next project</div>
+        <div><small>Crew member</small>Choo Xiao Ying</div>
+        <div><small>Call time</small><span class="highlight">Whenever you need</span></div>
+      </div>
+
+      <div class="callsheet__grid">
+        <article class="phase">
+          <span class="phase__num">01</span>
+          <h3>Pre-Production</h3>
+          <p>Planning that keeps a shoot on time and on budget.</p>
+          <ul>
+            <li>Budget management &amp; F&amp;B budgeting</li>
+            <li>Call sheets &amp; scheduling</li>
+            <li>Location scouting &amp; location decks</li>
+            <li>Casting prep &amp; crew/cast management</li>
+            <li>Scriptwriting</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <span class="phase__num">02</span>
+          <h3>On Set</h3>
+          <p>Calm hands on a busy floor.</p>
+          <ul>
+            <li>Production assistant &amp; production base PA</li>
+            <li>Talent management</li>
+            <li>Production design — props, wardrobe, staging</li>
+            <li>Blocking</li>
+            <li>Cinematography (DoP)</li>
+          </ul>
+        </article>
+        <article class="phase">
+          <span class="phase__num">03</span>
+          <h3>Post-Production</h3>
+          <p>Turning footage into something finished.</p>
+          <ul>
+            <li>Editing &amp; audio edit</li>
+            <li>Basic colour correction &amp; stabilisation</li>
+            <li>Subtitling &amp; end credits</li>
+            <li>2D animation &amp; lyric videos</li>
+            <li>Media organisation</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="toolkit">
+        <h3 class="toolkit__title">Kit list</h3>
+        <ul class="toolkit__list">
+          <li class="tool tool--pr"><b>Pr</b>Premiere Pro</li>
+          <li class="tool tool--ae"><b>Ae</b>After Effects</li>
+          <li class="tool tool--ps"><b>Ps</b>Photoshop</li>
+          <li class="tool tool--ai"><b>Ai</b>Illustrator</li>
+          <li class="tool tool--an"><b>An</b>Animate</li>
+          <li class="tool tool--dv"><b>Dv</b>DaVinci Resolve <em>basic</em></li>
+          <li class="tool tool--ms"><b>Ms</b>Microsoft Office</li>
+          <li class="tool tool--gw"><b>Gw</b>Google Workspace</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="about__photo">
+      <figure class="polaroid polaroid--main">
+        <img src="assets/img/portrait.jpg" alt="Portrait of Choo Xiao Ying" loading="lazy">
+        <figcaption>Headshot — Take 1</figcaption>
+      </figure>
+      <figure class="polaroid polaroid--side">
+        <img src="assets/img/casual.jpg" alt="Choo Xiao Ying, off duty" loading="lazy">
+        <figcaption>Wrap day</figcaption>
+      </figure>
+    </div>
+
+    <div class="about__text">
+      <span class="slate-label">Scene 04</span>
+      <h2>Behind the Camera</h2>
+      <p class="lead">I'm a Digital Media Production graduate from Taylor's University who loves the part of filmmaking most people never see — the spreadsheets, the call sheets, the props table and the timeline.</p>
+      <p>I've produced short films, shot a documentary, designed sets, and worked as a PA and editor on dramas, social ads and corporate videos. I'm self-driven, work well in a crew, and I'm always looking to get better at the craft.</p>
+      <!-- TODO (Xiao Ying): rewrite the two paragraphs above in your own voice. -->
+
+      <dl class="about__facts">
+        <div><dt>Based in</dt><dd>Selangor, Malaysia</dd></div>
+        <div><dt>Education</dt><dd>B. Mass Comm (Hons) Digital Media Production, Taylor's University</dd></div>
+        <div><dt>Languages</dt><dd>English · Chinese · Cantonese · Bahasa Melayu</dd></div>
+      </dl>
+
+      <h3 class="timeline__title">Experience</h3>
+      <ol class="timeline">
+        <li><span class="tc">2026</span><div><b>Intern — The Next Pictures</b><small>Feb – Jul 2026</small></div></li>
+        <li><span class="tc">2024</span><div><b>Intern — 180 Degrees Brandcom</b><small>Aug 2024</small></div></li>
+        <li><span class="tc">2023</span><div><b>Taylor's University</b><small>Sep 2023 – Oct 2026 · Digital Media Production</small></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS (placeholder) ============ -->
+  <section class="section quotes">
+    <div class="section__head">
+      <span class="slate-label">Scene 05</span>
+      <h2>From the Crew</h2>
+    </div>
+    <div class="quotes__grid">
+      <!-- TODO (Xiao Ying): add 2–3 short quotes from directors, producers or classmates you've worked with. -->
+      <blockquote class="quote quote--placeholder">
+        <p>“[ Placeholder — a line from a director or producer about working with Xiao Ying. ]”</p>
+        <footer>— Name, Role · Project</footer>
+      </blockquote>
+      <blockquote class="quote quote--placeholder">
+        <p>“[ Placeholder — a line from a crew member or supervisor at The Next Pictures. ]”</p>
+        <footer>— Name, Role · Company</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ CREDITS ROLL ============ -->
+  <section class="credits" aria-label="Credits and extracurriculars">
+    <div class="credits__roll">
+      <p class="credits__head">Also appearing in</p>
+      <dl>
+        <dt>Programme Coordinator</dt><dd>Taylor's BMC (DMP) FYP Showcase · 2025–26</dd>
+        <dt>Front of House</dt><dd>Taylor's BMC (DMP) FYP Showcase · 2024</dd>
+        <dt>Front of House</dt><dd>Taylor's University Film Festival (TUFF) · 2024</dd>
+        <dt>Vice-President &amp; Co-Founder</dt><dd>Sunway Animal Lovers Club · 2022</dd>
+        <dt>Backstage Crew — Prop Creation</dt><dd>Sri Kuala Lumpur Charity Concert · 2019</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <p class="contact__kicker">That's a wrap.</p>
+    <h2 class="contact__title">Let's make the next one.</h2>
+    <p class="contact__sub">Available now for short films, commercials, corporate &amp; social content — as a PA, coordinator, production designer or editor.</p>
+    <div class="contact__actions">
+      <a class="btn btn--primary btn--lg" href="mailto:xiaoyingchoo@gmail.com?subject=Project%20enquiry">xiaoyingchoo@gmail.com</a>
+    </div>
+    <ul class="contact__links">
+      <li><a href="https://www.linkedin.com/in/xiao-ying-choo-4921852a4" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      <li><a href="https://linktr.ee/ChooXiaoYing" target="_blank" rel="noopener">Linktree ↗</a></li>
+      <!-- TODO (Xiao Ying): add a downloadable CV, e.g. <li><a href="assets/Choo-Xiao-Ying-CV.pdf" download>Download CV ↓</a></li> -->
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Choo Xiao Ying</span>
+    <span class="footer__tc">FIN</span>
+  </footer>
+
+  <!-- video lightbox -->
+  <dialog class="lightbox" id="lightbox" aria-label="Video player">
+    <button class="lightbox__close" aria-label="Close video">✕</button>
+    <div class="lightbox__frame" id="lightbox-frame"></div>
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </dialog>
+
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
