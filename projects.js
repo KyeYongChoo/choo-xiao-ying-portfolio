@@ -12,8 +12,8 @@
   tasks     – what you did, shown under the role
   group     – which row the card sits in:
                 "films"  → wide 16:9 cards (YouTube)
-                "social" → tall 9:16 cards (TikTok, Instagram, social ads)
-                "client" → one wide card with the story beside it, for corporate / client work
+                "social" → reels: tall videos that autoplay silently, captions over the picture
+                "client" → wide cards with the story beside the picture, for corporate / client work
                 "early"  → earlier work, shown last
   still     – path to an image in assets/stills/  (leave "" to show a "still needed" placeholder)
   stillBg   – optional background colour behind the still; set it to show a logo whole instead of cropped
@@ -21,6 +21,7 @@
   How the card plays (use one):
   youtube   – YouTube video ID (the bit after youtu.be/) → plays in a pop-up on the site
   instagram – Instagram post path, e.g. "reel/DbUbhxADUgT" or "p/DaZ9Pz1uV8u" → plays in a pop-up on the site
+  video     – a short .mp4 in assets/ → loops silently inside the card (clicking still plays the post above)
   tiktok    – TikTok video link (or just the number at the end of it) → loops silently inside the card
   link      – any other link (TikTok account, Instagram account, Drive) → opens in a new tab
               (with tiktok, this is where clicking the card goes)
@@ -98,19 +99,7 @@ const PROJECTS = [
     group: "social",
     still: "assets/stills/love-sheryl.jpg",
     instagram: "p/DaZ9Pz1uV8u",
-  },
-  {
-    title: "Chicken & Beer",
-    type: "Social Media Ads",
-    lang: "English",
-    year: "2026",
-    role: "Production Assistant",
-    about: "A series of social ads for the Chicken & Beer restaurant, made during my internship.",
-    tasks: "Call sheets, F&B, talent management",
-    group: "social",
-    still: "assets/stills/chicken-and-beer.jpg",
-    stillBg: "#fe9900",
-    link: "https://www.instagram.com/chickenandbeer.my/",
+    video: "assets/teaser/love-sheryl-teaser.mp4",
   },
   {
     title: "JS Solar",
@@ -123,6 +112,19 @@ const PROJECTS = [
     group: "client",
     still: "assets/stills/js-solar.jpg",
     instagram: "reel/DbUbhxADUgT",
+  },
+  {
+    title: "Chicken & Beer",
+    type: "Social Media Ads",
+    lang: "English",
+    year: "2026",
+    role: "Production Assistant",
+    about: "A series of social ads for the Chicken & Beer restaurant, made during my internship.",
+    tasks: "Call sheets, F&B, talent management",
+    group: "client",
+    still: "assets/stills/chicken-and-beer.jpg",
+    stillBg: "#fe9900",
+    link: "https://www.instagram.com/chickenandbeer.my/",
   },
   {
     title: "Animation",

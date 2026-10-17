@@ -207,8 +207,8 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 
 .filmstrip { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 28px; }
 .filmstrip[data-group="films"] { grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); }
-.filmstrip--vertical { grid-template-columns: repeat(auto-fit, minmax(230px, 290px)); justify-content: center; }
 .filmstrip--client { grid-template-columns: 1fr; }
+.reels + .work__group { margin-top: 32px; }
 .filmstrip--early { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 360px)); justify-content: center; }
 
 /* whole card is clickable via the title link; inline links sit above it */
@@ -246,28 +246,85 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 }
 .card.is-linked:hover .card__play { background: var(--amber); color: var(--ink); border-color: var(--amber); }
 
-/* tall social cards: a phone screen instead of a film strip */
-.card--social .card__media {
-  aspect-ratio: 9 / 16; margin: 14px 14px 0;
-  border: 7px solid #000; border-radius: 22px;
-  box-shadow: 0 0 0 1px var(--line), 0 18px 40px rgba(0,0,0,.45);
+/* ---------- reels: full-bleed stage, the playing reel takes over the background ---------- */
+.reels {
+  position: relative; isolation: isolate; overflow: hidden;
+  margin: 56px calc(50% - 50vw) 0; padding: 48px var(--gutter) 64px;
 }
-.card--social .card__media::before, .card--social .card__media::after { content: none; }
-.card__live { position: absolute; inset: 0; z-index: 1; opacity: 0; transition: opacity .6s; }
-.card__live.is-ready { opacity: 1; }
+.reels > .work__group, .reels__track { max-width: calc(var(--max) - 2 * var(--gutter)); margin-inline: auto; }
+.reels > .work__group { margin-top: 0; color: rgba(236,230,220,.75); }
+.reels > .work__group::after { background: rgba(236,230,220,.2); }
+.work__hint { display: none; color: var(--amber); }
+
+.reels__backdrop { position: absolute; inset: 0; z-index: -1; background: var(--bg); }
+.reels__backdrop img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  filter: blur(60px) saturate(1.4) brightness(.42); transform: scale(1.25);
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.reels__backdrop img.is-active { opacity: 1; }
+.reels__backdrop::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(var(--bg), transparent 18%, transparent 82%, var(--bg));
+}
+
+.reels__track { display: flex; justify-content: center; align-items: center; gap: 24px; }
+.reel {
+  --w: min(400px, 44vh);
+  position: relative; flex: 0 0 var(--w); width: var(--w);
+  transform: scale(.8); opacity: .5; transition: transform .6s cubic-bezier(.2,.7,.2,1), opacity .6s;
+}
+.reel.is-active { transform: none; opacity: 1; }
+.reel__screen {
+  position: relative; aspect-ratio: 9 / 16; overflow: hidden; background: #000;
+  border: 8px solid #000; border-radius: 28px;
+  box-shadow: 0 0 0 1px rgba(236,230,220,.14), 0 30px 80px rgba(0,0,0,.6);
+}
+.reel__screen > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.card__live, .card__loop { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; opacity: 0; transition: opacity .6s; }
+.card__loop { object-fit: cover; }
+.card__live.is-ready, .card__loop.is-ready { opacity: 1; }
 .card__live iframe { width: 100%; height: 100%; border: 0; pointer-events: none; }
-.card--social .card__slate { grid-template-columns: 1fr 1fr; margin-top: 14px; border-top: 1px solid var(--line); }
-.card--social .card__slate span:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-.card--social .card__slate span:nth-child(2n) { border-right: 0; }
-/* on phones the reels row swipes sideways, like a feed */
+
+/* whole screen is clickable; the caption sits on top of it */
+.reel__hit { position: absolute; inset: 0; z-index: 2; }
+.reel__overlay {
+  position: absolute; inset: auto 0 0 0; z-index: 3; pointer-events: none;
+  padding: 72px 56px 18px 18px;
+  background: linear-gradient(transparent, rgba(0,0,0,.55) 30%, rgba(0,0,0,.88));
+  text-shadow: 0 1px 8px rgba(0,0,0,.6);
+}
+.reel__overlay a { pointer-events: auto; }
+.reel__meta { margin: 0 0 8px; font: 500 10px/1.5 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: rgba(236,230,220,.75); }
+.reel__overlay h3 { font: 400 32px/1 var(--display); letter-spacing: .02em; }
+.reel__overlay h3 a { text-decoration: none; }
+.reel__role { margin: 6px 0 0; color: var(--amber); font-weight: 600; font-size: 13px; }
+.reel__about { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: #e9e2d6; }
+.reel__tasks { margin: 6px 0 0; font-size: 12px; line-height: 1.45; color: rgba(236,230,220,.65); }
+.reel__cta {
+  display: inline-block; margin-top: 12px;
+  font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+  background: rgba(13,12,11,.6); padding: 7px 9px; border: 1px solid rgba(236,230,220,.25);
+}
+.reel:hover .reel__cta { background: var(--amber); color: var(--ink); border-color: var(--amber); text-shadow: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reel { transform: none; opacity: 1; }
+}
+
+/* on phones the reels swipe sideways, like a feed */
 @media (max-width: 560px) {
-  .filmstrip--vertical {
-    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px;
-    margin-inline: calc(var(--gutter) * -1); padding: 4px var(--gutter) 12px; scroll-padding-inline: var(--gutter);
-    scrollbar-width: none;
+  .reels { padding-inline: 0; }
+  .reels > .work__group { padding-inline: var(--gutter); }
+  .reels__track {
+    justify-content: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0;
+    padding: 4px 11vw 12px; scrollbar-width: none;
   }
-  .filmstrip--vertical::-webkit-scrollbar { display: none; }
-  .filmstrip--vertical .card { flex: 0 0 78%; scroll-snap-align: start; }
+  .reels__track::-webkit-scrollbar { display: none; }
+  .reel { --w: 78vw; scroll-snap-align: center; transform: scale(.9); }
+  .reel.is-active { transform: none; }
+  .reel__overlay { padding: 64px 52px 14px 14px; }
+  .reel__overlay h3 { font-size: 28px; }
+  .work__hint { display: inline; }
 }
 
 /* client work: one wide card, picture beside the story */
