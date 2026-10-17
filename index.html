@@ -20,7 +20,6 @@
       <span></span><span></span>
     </button>
     <nav id="nav-links" class="nav__links">
-      <a href="#reel">Reel</a>
       <a href="#work">Filmography</a>
       <a href="#crew">What I Do</a>
       <a href="#about">About</a>
@@ -31,10 +30,10 @@
   <!-- ============ HERO — letterboxed title card ============ -->
   <section class="hero" id="top">
     <div class="hero__stills" aria-hidden="true">
-      <img src="assets/stills/mission-lanterns.jpg" alt="" class="is-active">
+      <img src="assets/stills/mission-target.jpg" alt="" class="is-active">
       <img src="assets/stills/satu-balcony.jpg" alt="">
-      <img src="assets/stills/chiral-clock.jpg" alt="">
-      <img src="assets/stills/writer-desk.jpg" alt="">
+      <img src="assets/stills/chiral-gaze.jpg" alt="">
+      <img src="assets/stills/writer-wrench.jpg" alt="">
     </div>
     <div class="hero__grain" aria-hidden="true"></div>
 
@@ -62,38 +61,8 @@
         Producer <i>/</i> Production Assistant <i>/</i> Production Designer <i>/</i> Editor
       </p>
       <div class="hero__actions">
-        <a href="#work" class="btn btn--primary">▶ Roll the reel</a>
+        <a href="#work" class="btn btn--primary">▶ See the work</a>
         <a href="#contact" class="btn btn--ghost">Book me for your shoot</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SHOWREEL ============ -->
-  <section class="section reel" id="reel">
-    <div class="section__head">
-      <span class="slate-label">Scene 01</span>
-      <h2>Showreel</h2>
-    </div>
-    <!--
-      TODO (Xiao Ying): Replace this placeholder with your showreel.
-      For a YouTube video, swap the whole .placeholder div for:
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Showreel" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-    -->
-    <div class="reel__frame">
-      <div class="placeholder placeholder--reel">
-        <div class="clapper" aria-hidden="true">
-          <div class="clapper__top"></div>
-          <div class="clapper__body">
-            <div><small>PROD.</small>SHOWREEL 2026</div>
-            <div class="clapper__row">
-              <div><small>ROLL</small>—</div>
-              <div><small>SCENE</small>01</div>
-              <div><small>TAKE</small>?</div>
-            </div>
-            <div><small>CREW</small>CHOO XIAO YING</div>
-          </div>
-        </div>
-        <p class="placeholder__note">Showreel coming soon<br><span>[ placeholder — drop a 60–90s highlight cut here ]</span></p>
       </div>
     </div>
   </section>
@@ -101,25 +70,28 @@
   <!-- ============ FILMOGRAPHY (filled by projects.js) ============ -->
   <section class="section work" id="work">
     <div class="section__head">
-      <span class="slate-label">Scene 02</span>
+      <span class="slate-label">Scene 01</span>
       <h2>Filmography</h2>
       <p class="section__sub">Short films, documentary, branded and social work — from first budget sheet to final export.</p>
     </div>
 
-    <div class="filters" role="tablist" aria-label="Filter projects">
-      <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="filter" data-filter="film" role="tab" aria-selected="false">Film &amp; Drama</button>
-      <button class="filter" data-filter="commercial" role="tab" aria-selected="false">Commercial</button>
-      <button class="filter" data-filter="post" role="tab" aria-selected="false">Edit &amp; Motion</button>
-    </div>
+    <h3 class="work__group">Short Films &amp; Documentary</h3>
+    <div class="filmstrip" data-group="films"></div>
 
-    <div class="filmstrip" id="filmstrip"></div>
+    <h3 class="work__group">Reels &amp; Series</h3>
+    <div class="filmstrip filmstrip--vertical" data-group="social"></div>
+
+    <h3 class="work__group">Client Work</h3>
+    <div class="filmstrip filmstrip--client" data-group="client"></div>
+
+    <h3 class="work__group">Earlier Work</h3>
+    <div class="filmstrip filmstrip--early" data-group="early"></div>
   </section>
 
   <!-- ============ WHAT I DO — call sheet ============ -->
   <section class="section crew" id="crew">
     <div class="section__head">
-      <span class="slate-label">Scene 03</span>
+      <span class="slate-label">Scene 02</span>
       <h2>Call Sheet</h2>
       <p class="section__sub">Where I fit on your production — before, during and after the shoot.</p>
     </div>
@@ -162,7 +134,7 @@
           <p>Turning footage into something finished.</p>
           <ul>
             <li>Editing &amp; audio edit</li>
-            <li>Basic colour correction &amp; stabilisation</li>
+            <li>Colour correction &amp; stabilisation</li>
             <li>Subtitling &amp; end credits</li>
             <li>2D animation &amp; lyric videos</li>
             <li>Media organisation</li>
@@ -178,7 +150,7 @@
           <li class="tool tool--ps"><b>Ps</b>Photoshop</li>
           <li class="tool tool--ai"><b>Ai</b>Illustrator</li>
           <li class="tool tool--an"><b>An</b>Animate</li>
-          <li class="tool tool--dv"><b>Dv</b>DaVinci Resolve <em>basic</em></li>
+          <li class="tool tool--dv"><b>Dv</b>DaVinci Resolve</li>
           <li class="tool tool--ms"><b>Ms</b>Microsoft Office</li>
           <li class="tool tool--gw"><b>Gw</b>Google Workspace</li>
         </ul>
@@ -200,7 +172,7 @@
     </div>
 
     <div class="about__text">
-      <span class="slate-label">Scene 04</span>
+      <span class="slate-label">Scene 03</span>
       <h2>Behind the Camera</h2>
       <p class="lead">I'm a Digital Media Production graduate from Taylor's University who loves the part of filmmaking most people never see — the spreadsheets, the call sheets, the props table and the timeline.</p>
       <p>I've produced short films, shot a documentary, designed sets, and worked as a PA and editor on dramas, social ads and corporate videos. I'm self-driven, work well in a crew, and I'm always looking to get better at the craft.</p>
@@ -218,25 +190,6 @@
         <li><span class="tc">2024</span><div><b>Intern — 180 Degrees Brandcom</b><small>Aug 2024</small></div></li>
         <li><span class="tc">2023</span><div><b>Taylor's University</b><small>Sep 2023 – Oct 2026 · Digital Media Production</small></div></li>
       </ol>
-    </div>
-  </section>
-
-  <!-- ============ TESTIMONIALS (placeholder) ============ -->
-  <section class="section quotes">
-    <div class="section__head">
-      <span class="slate-label">Scene 05</span>
-      <h2>From the Crew</h2>
-    </div>
-    <div class="quotes__grid">
-      <!-- TODO (Xiao Ying): add 2–3 short quotes from directors, producers or classmates you've worked with. -->
-      <blockquote class="quote quote--placeholder">
-        <p>“[ Placeholder — a line from a director or producer about working with Xiao Ying. ]”</p>
-        <footer>— Name, Role · Project</footer>
-      </blockquote>
-      <blockquote class="quote quote--placeholder">
-        <p>“[ Placeholder — a line from a crew member or supervisor at The Next Pictures. ]”</p>
-        <footer>— Name, Role · Company</footer>
-      </blockquote>
     </div>
   </section>
 
@@ -278,7 +231,7 @@
   <dialog class="lightbox" id="lightbox" aria-label="Video player">
     <button class="lightbox__close" aria-label="Close video">✕</button>
     <div class="lightbox__frame" id="lightbox-frame"></div>
-    <p class="lightbox__caption"><span id="lightbox-caption"></span><a id="lightbox-yt" href="#" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+    <p class="lightbox__caption"><span id="lightbox-caption"></span><a id="lightbox-src" href="#" target="_blank" rel="noopener"></a></p>
   </dialog>
 
   <script src="projects.js"></script>
