@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Choo Xiao Ying — Production &amp; Post</title>
   <meta name="description" content="Choo Xiao Ying — producer, production assistant, production designer and editor based in Selangor, Malaysia. Available for hire.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +48,7 @@
         <span class="vf-meta">4K · 24FPS · ISO 800</span>
       </div>
       <div class="vf-bottom">
-        <span id="still-caption">Still — <em>The Mission</em> (2026)</span>
+        <span id="still-caption"><em>The Mission</em> (2026)</span>
         <span>WB 5600K</span>
       </div>
     </div>
@@ -55,7 +56,6 @@
     <div class="hero__content">
       <p class="hero__status"><span class="status-dot"></span> Available for hire — Malaysia &amp; remote</p>
       <h1 class="hero__title">
-        <span class="hero__kicker">A production by</span>
         Choo Xiao Ying
       </h1>
       <p class="hero__roles">
@@ -77,7 +77,7 @@
     <!--
       TODO (Xiao Ying): Replace this placeholder with your showreel.
       For a YouTube video, swap the whole .placeholder div for:
-      <iframe src="https://www.youtube-nocookie.com/embed/VIDEO_ID" title="Showreel" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Showreel" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     -->
     <div class="reel__frame">
       <div class="placeholder placeholder--reel">
@@ -278,7 +278,7 @@
   <dialog class="lightbox" id="lightbox" aria-label="Video player">
     <button class="lightbox__close" aria-label="Close video">✕</button>
     <div class="lightbox__frame" id="lightbox-frame"></div>
-    <p class="lightbox__caption" id="lightbox-caption"></p>
+    <p class="lightbox__caption"><span id="lightbox-caption"></span><a id="lightbox-yt" href="#" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
   </dialog>
 
   <script src="projects.js"></script>

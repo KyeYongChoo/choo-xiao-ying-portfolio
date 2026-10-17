@@ -192,10 +192,6 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
   letter-spacing: .005em;
   text-shadow: 0 4px 40px rgba(0,0,0,.5);
 }
-.hero__kicker {
-  display: block; font: 400 clamp(14px, 1.6vw, 18px)/1.4 var(--mono);
-  letter-spacing: .3em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px;
-}
 .hero__roles { font: 500 clamp(13px, 1.8vw, 18px)/1.6 var(--mono); letter-spacing: .06em; text-transform: uppercase; margin: 20px 0 32px; color: rgba(236,230,220,.85); }
 .hero__roles i { font-style: normal; color: var(--amber); margin: 0 .4em; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -431,7 +427,8 @@ a.card__link:hover .card__play { background: var(--amber); color: var(--ink); bo
 .lightbox::backdrop { background: rgba(0,0,0,.88); backdrop-filter: blur(4px); }
 .lightbox__frame { aspect-ratio: 16 / 9; }
 .lightbox__frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.lightbox__caption { margin: 0; padding: 12px 16px; font: 500 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; background: var(--bg-2); }
+.lightbox__caption { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 12px 16px; font: 500 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; background: var(--bg-2); }
+.lightbox__caption a { color: var(--amber); white-space: nowrap; }
 .lightbox__close {
   position: absolute; top: -44px; right: 0; background: none; border: 0; color: var(--text);
   font-size: 22px; cursor: pointer; padding: 8px;

@@ -62,6 +62,7 @@
   const lightbox = document.getElementById("lightbox");
   const frame = document.getElementById("lightbox-frame");
   const caption = document.getElementById("lightbox-caption");
+  const ytLink = document.getElementById("lightbox-yt");
 
   strip.addEventListener("click", (e) => {
     const link = e.target.closest("[data-youtube]");
@@ -69,8 +70,11 @@
     e.preventDefault();
     const id = link.dataset.youtube;
     const title = link.querySelector("h3").textContent;
-    frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    const params = new URLSearchParams({ autoplay: 1, rel: 0, playsinline: 1 });
+    if (location.protocol.startsWith("http")) params.set("origin", location.origin);
+    frame.innerHTML = `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}?${params}" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     caption.textContent = title;
+    ytLink.href = `https://www.youtube.com/watch?v=${encodeURIComponent(id)}`;
     lightbox.showModal();
   });
 
@@ -83,10 +87,10 @@
   const stills = document.querySelectorAll(".hero__stills img");
   const stillCaption = document.getElementById("still-caption");
   const captions = [
-    "Still — <em>The Mission</em> (2026)",
-    "Still — <em>Satu Pinggan Harapan</em> (2025)",
-    "Still — <em>Chiral</em> (2025)",
-    "Still — <em>The Writer</em> (2025)",
+    "<em>The Mission</em> (2026)",
+    "<em>Satu Pinggan Harapan</em> (2025)",
+    "<em>Chiral</em> (2025)",
+    "<em>The Writer</em> (2025)",
   ];
   let current = 0;
   if (!reduceMotion && stills.length > 1) {
