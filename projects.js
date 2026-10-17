@@ -21,7 +21,8 @@
   How the card plays (use one):
   youtube   – YouTube video ID (the bit after youtu.be/) → plays in a pop-up on the site
   instagram – Instagram post path, e.g. "reel/DbUbhxADUgT" or "p/DaZ9Pz1uV8u" → plays in a pop-up on the site
-  video     – a short .mp4 in assets/ → loops silently inside the card (clicking still plays the post above)
+  loop      – a short silent .mp4 in assets/video/ → loops inside the card while it's on screen
+              (clicking still plays or opens whatever the card links to)
   tiktok    – TikTok video link (or just the number at the end of it) → loops silently inside the card
   link      – any other link (TikTok account, Instagram account, Drive) → opens in a new tab
               (with tiktok, this is where clicking the card goes)
@@ -99,7 +100,7 @@ const PROJECTS = [
     group: "social",
     still: "assets/stills/love-sheryl.jpg",
     instagram: "p/DaZ9Pz1uV8u",
-    video: "assets/teaser/love-sheryl-teaser.mp4",
+    loop: "assets/teaser/love-sheryl-teaser.mp4",
   },
   {
     title: "JS Solar",
@@ -111,7 +112,9 @@ const PROJECTS = [
     tasks: "Audio edit, colour correction, video stabilisation, media organisation",
     group: "client",
     still: "assets/stills/js-solar.jpg",
-    instagram: "reel/DbUbhxADUgT",
+    // Instagram won't play this reel inside other sites, so the card loops a short b-roll cut and links out to the full video
+    loop: "assets/video/js-solar-loop.mp4",
+    link: "https://www.instagram.com/reel/DbUbhxADUgT/",
   },
   {
     title: "Chicken & Beer",
@@ -147,7 +150,7 @@ const PROJECTS = [
     about: "",
     tasks: "",
     group: "early",
-    still: "",
+    still: "assets/stills/lyric-video.jpg",
     link: "https://drive.google.com/file/d/11DHMX36UkGKPFmQuVcl711ytf5kEt3ZH/view",
   },
 ];

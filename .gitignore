@@ -15,3 +15,7 @@ links_to_her_projects.txt
 Thumbs.db
 desktop.ini
 .vscode/
+
+# Full-length videos: too big to host here; the site uses short loops cut from them
+assets/video/*
+!assets/video/*-loop.mp4

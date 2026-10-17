@@ -10,7 +10,6 @@ A static site (plain HTML/CSS/JS, no build step). Open `index.html` in a browser
 - `assets/img/` — portrait photos
 
 ## Still needed from Xiao Ying
-- [ ] **Still** for the Lyric Video
 - [ ] **Confirm roles/years** for the Animation and Lyric Video entries (currently guesses)
 - [ ] **About text**: rewrite in her own voice
 - [ ] **CV PDF** to offer as a download (optional)

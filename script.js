@@ -8,7 +8,9 @@
   const withLinks = (s) =>
     esc(s).replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a class="card__inline" href="$2" target="_blank" rel="noopener">$1 ↗</a>');
   const linkLabel = (url) =>
-    url.includes("instagram.com") ? "View on Instagram ↗" : url.includes("tiktok.com") ? "Watch on TikTok ↗" : "Watch ↗";
+    /instagram\.com\/(reel|p)\//.test(url) ? "Watch on Instagram ↗"
+      : url.includes("instagram.com") ? "View on Instagram ↗"
+      : url.includes("tiktok.com") ? "Watch on TikTok ↗" : "Watch ↗";
 
   // accepts the video number or a full TikTok video link
   const tiktokIdOf = (v) => String(v || "").match(/(\d{8,})\/?(?:[?#].*)?$/)?.[1];
@@ -36,6 +38,9 @@
     const still = p.still
       ? `<img src="${esc(p.still)}" alt="Still from ${esc(p.title)}" loading="lazy"${p.stillBg ? ' class="is-logo"' : ""}>`
       : `<div class="still-missing"><span>STILL NEEDED</span><small>[ placeholder ]</small></div>`;
+    const loop = p.loop && !reduceMotion
+      ? `<video class="card__loop" src="${esc(p.loop)}" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>`
+      : "";
     const about = p.about ? withLinks(p.about) : "";
     const card = document.createElement("article");
 
@@ -49,7 +54,7 @@
         <div class="reel__screen">
           ${still}
           ${tiktokId && !reduceMotion ? `<div class="card__live" data-preview="${tiktokId}"></div>` : ""}
-          ${p.video && !reduceMotion ? `<video class="card__loop" src="${esc(p.video)}" muted loop playsinline preload="none" tabindex="-1" aria-hidden="true"></video>` : ""}
+          ${loop}
           ${href ? `<a class="reel__hit" href="${esc(href)}" target="_blank" rel="noopener"${data} data-title="${esc(p.title)}" tabindex="-1" aria-hidden="true"></a>` : ""}
           <div class="reel__overlay">
             <p class="reel__meta">${meta}</p>
@@ -68,6 +73,7 @@
       card.innerHTML = `
         <div class="card__media"${p.stillBg ? ` style="background:${esc(p.stillBg)}"` : ""}>
           ${still}
+          ${loop}
           <span class="card__play">${action}</span>
         </div>
         <div class="card__slate">
@@ -147,6 +153,18 @@
     r.addEventListener("focusin", () => activate(r));
   });
 
+  /* ---------- Silent loops on the other cards: play while on screen ---------- */
+  const cardLoops = work.querySelectorAll(".card .card__loop");
+  if (cardLoops.length && "IntersectionObserver" in window) {
+    const loopIO = new IntersectionObserver((entries) =>
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting && !lightbox.open) target.play().then(() => target.classList.add("is-ready"), () => {});
+        else target.pause();
+      })
+    , { threshold: 0.4 });
+    cardLoops.forEach((v) => loopIO.observe(v));
+  }
+
   /* ---------- Video lightbox ---------- */
   const frame = document.getElementById("lightbox-frame");
   const caption = document.getElementById("lightbox-caption");
@@ -158,6 +176,8 @@
     e.preventDefault();
     const title = link.dataset.title || link.textContent;
     const { youtube, instagram, tiktok } = link.dataset;
+    srcLink.href = link.href;
+    caption.textContent = title;
     let src;
     if (youtube) {
       const params = new URLSearchParams({ autoplay: 1, rel: 0, playsinline: 1 });
@@ -173,8 +193,6 @@
     }
     frame.innerHTML = `<iframe src="${esc(src)}" title="${esc(title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
     lightbox.classList.toggle("lightbox--vertical", !youtube);
-    caption.textContent = title;
-    srcLink.href = link.href;
     lightbox.showModal();
     sync();
   });
@@ -182,7 +200,15 @@
   const closeLightbox = () => lightbox.close();
   lightbox.querySelector(".lightbox__close").addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-  lightbox.addEventListener("close", () => { frame.innerHTML = ""; sync(); });
+  lightbox.addEventListener("close", () => { frame.innerHTML = ""; frame.style.height = ""; sync(); });
+  // Instagram reports how tall its post is; fit the pop-up to it instead of leaving white space below
+  addEventListener("message", (e) => {
+    if (e.origin !== "https://www.instagram.com" || !lightbox.open) return;
+    let msg;
+    try { msg = typeof e.data === "string" ? JSON.parse(e.data) : e.data; } catch { return; }
+    const h = msg?.type === "MEASURE" && msg.details?.height;
+    if (h > 0) frame.style.height = `${Math.min(h, innerHeight * 0.8)}px`;
+  });
 
   /* ---------- Hero still rotation ---------- */
   const stills = document.querySelectorAll(".hero__stills img");
