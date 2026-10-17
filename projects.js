@@ -144,10 +144,10 @@ const PROJECTS = [
   {
     title: "Lyric Video",
     type: "Motion Graphics",
-    lang: "",
+    lang: "English",
     year: "",
     role: "Editor / Motion Designer",
-    about: "",
+    about: "A kinetic typography lyric video for “Barbie World” by Nicki Minaj and Ice Spice, from the Barbie movie soundtrack. The lyrics bounce, stretch and spin across a hot-pink screen in time with the track.",
     tasks: "",
     group: "early",
     still: "assets/stills/lyric-video.jpg",
